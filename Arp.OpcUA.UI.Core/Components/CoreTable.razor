@@ -1,0 +1,68 @@
+﻿@typeparam T
+
+<CascadingValue Value="this" Name="ParentTable">
+
+	@if (Items != null)
+	{
+		<style>
+			.selected {
+				background-color: #1E88E5 !important;
+			}
+
+				.selected > td {
+					color: white !important;
+				}
+
+					.selected > td .mud-input {
+						color: white !important;
+					}
+		</style>
+		@if (editableColumns.Count > 0)
+		{
+			<MudTable @ref="mudTable" Items="@Items" Hover="true"
+				Breakpoint="Breakpoint.Sm" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent" T="T">
+				<HeaderContent>
+					@foreach (var col in columns)
+					{
+						<MudTh>@col.Name</MudTh>
+					}
+				</HeaderContent>
+				<RowTemplate>
+					@foreach (var col in columns)
+					{
+						<MudTd T="T" DataLabel="@col.Name">@col.ChildContent(context)</MudTd>
+					}
+				</RowTemplate>
+				<RowEditingTemplate>
+					@foreach (var col in editableColumns)
+					{
+						<MudTd T="T" DataLabel="@col.Name">@col.ChildContent(context)</MudTd>
+					}
+				</RowEditingTemplate>
+			</MudTable>
+		}
+		@if (editableColumns.Count == 0)
+		{
+			<MudTable @ref="mudTable" Items="@Items" Hover="true"
+			  Breakpoint="Breakpoint.Sm" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent" T="T">
+				<HeaderContent>
+					@foreach (var col in columns)
+					{
+						<MudTh>@col.Name</MudTh>
+					}
+				</HeaderContent>
+				<RowTemplate>
+					@foreach (var col in columns)
+					{
+						<MudTd T="T" DataLabel="@col.Name">@col.ChildContent(context)</MudTd>
+					}
+				</RowTemplate>
+			</MudTable>
+		}
+
+		//without this the columns are not rendered
+		<div style="height:0;visibility:hidden">
+			@Columns
+		</div>
+	}
+</CascadingValue>

@@ -1,0 +1,25 @@
+﻿.mapping-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+	.mapping-table thead tr {
+		background-color: darkgray;
+		border-bottom: 1px solid gray;
+	}
+
+	.mapping-table td:nth-child(2) {
+		border-right: 1px solid gray;
+	}
+
+	.mapping-table tr:nth-child(odd) {
+		background-color: ThreeDFace;
+	}
+
+	.mapping-table tr:nth-child(event) {
+		background-color: ThreeDLightShadow;
+	}
+
+	.mapping-table tr:last-child {
+		background-color: white;
+	}

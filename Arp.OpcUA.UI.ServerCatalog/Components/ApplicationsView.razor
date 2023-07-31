@@ -1,0 +1,63 @@
+﻿@if (Servers != null)
+{
+    @if (EditItem != null)
+    {
+        <CoreTextBox Label="Name" @bind-Value="@EditItem.Name" />
+        <CoreTextBox Label="URL" @bind-Value="@EditItem.Url" />
+        <CoreTextBox Label="User Name" @bind-Value="@EditItem.UserName" />
+        <CoreTextBox Label="Password" @bind-Value="@EditItem.Password" IsPassword=true />
+        <CoreSelect Label="Security Mode" @bind-Value="EditItem.SecurityMode">
+            <CoreSelectItem Value="@Opc.Ua.MessageSecurityMode.None">None</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.MessageSecurityMode.Sign">Sign</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.MessageSecurityMode.SignAndEncrypt">SignAndEncrypt</CoreSelectItem>
+        </CoreSelect>
+        <CoreSelect Label="Security Policy" @bind-Value="SecurityPolicyUriWithBestAvailable">
+            <CoreSelectItem Value="@("best")">Best Available</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.Basic128Rsa15">Basic128Rsa15</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.Aes256_Sha256_RsaPss">Aes256_Sha256_RsaPss</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.Aes128_Sha256_RsaOaep">Aes128_Sha256_RsaOaep</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.Basic256Sha256">Basic256Sha256</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.Basic256">Basic256</CoreSelectItem>
+            <CoreSelectItem Value="@Opc.Ua.SecurityPolicies.None">None</CoreSelectItem>
+        </CoreSelect>
+        <CoreButton OnClick="Apply" Text="Apply" />
+        <CoreButton OnClick=Cancel Text="Cancel" />
+    }
+    @if (EditItem == null)
+    {
+        <div>
+            <CoreButton OnClick="AddNew" Text="Add Server" />
+        </div>
+    }
+    <div style="height:45vh; overflow:auto;">
+        <CoreTable T="ServerConnectionModel" Items="Servers" @bind-SelectedItem="@SelectedItem">
+            <Columns>
+                @*<CoreTableColumn Name="Enabled" T="ServerConnectionModel">@(context.Enabled ? "✓" : "")</CoreTableColumn>*@
+                <CoreTableColumn Name="Enabled" T="ServerConnectionModel"><CoreCheckBox Checked="@context.Enabled" CheckedChanged="@(async (isChecked) => await CheckedChanged(context, isChecked))" /></CoreTableColumn>
+                <CoreTableColumn Name="Name" T="ServerConnectionModel">@context.Name</CoreTableColumn>
+                <CoreTableColumn Name="Url" T="ServerConnectionModel">@context.Url</CoreTableColumn>
+                <CoreTableColumn Name="User Name" T="ServerConnectionModel">@context.UserName</CoreTableColumn>
+                <CoreTableColumn Name="Password" T="ServerConnectionModel">@context.Password</CoreTableColumn>
+                <CoreTableColumn Name="" T="ServerConnectionModel">
+                    <div>
+                        <CoreButton OnClick="@(async () => await Remove(context))" Text="🗙" />
+                        <CoreButton OnClick="@(async () => await TestConnection(context))" Text="Test" />
+                    </div>
+                </CoreTableColumn>
+
+                @*
+            <CoreEditableTableColumn Name="Enabled" T="ServerDescriptorViewModel"><input type="checkbox" @bind="@context.Enabled" /></CoreEditableTableColumn>
+            <CoreEditableTableColumn Name="Name" T="ServerDescriptorViewModel"><CoreTextBox @bind-Value="@context.Name" /></CoreEditableTableColumn>
+            <CoreEditableTableColumn Name="Url" T="ServerDescriptorViewModel"><CoreTextBox Value="@context.Url" /></CoreEditableTableColumn>
+            <CoreEditableTableColumn Name="User Name" T="ServerDescriptorViewModel"><CoreTextBox Value="@context.UserName" /></CoreEditableTableColumn>
+            <CoreEditableTableColumn Name="Password" T="ServerDescriptorViewModel"><CoreTextBox Value="@context.Password" /></CoreEditableTableColumn>
+            *@
+            </Columns>
+        </CoreTable>
+    </div>
+    <CoreDialog @ref=statusDialog Title="Connection Test">
+        <div>@statusText</div>
+    </CoreDialog>
+
+}
+

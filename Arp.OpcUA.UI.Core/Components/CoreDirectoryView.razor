@@ -1,0 +1,14 @@
+﻿<div class="dropArea @dropClass">
+	Drag and drop eUA Client configuration xml, or click to select a local file.
+	<InputFile disabled="@Uploading"
+			   OnChange="OnInputFileChange"
+			   @ondragenter="HandleDragEnter"
+			   @ondragleave="HandleDragLeave" />
+</div>
+<br />
+<ul>
+	@foreach (var url in FileUrls)
+	{
+		<li><a href="@url">@url</a><br /></li>
+	}
+</ul>

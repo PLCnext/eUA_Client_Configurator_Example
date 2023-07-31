@@ -1,0 +1,49 @@
+﻿@using MudBlazor
+
+@inherits LayoutComponentBase
+
+<PageTitle>eUA Client Configurator</PageTitle>
+
+<MudThemeProvider Theme="CustomTheme" />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">eUA Client Configurator</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    MudTheme CustomTheme = new MudTheme()
+        {
+            Palette = new PaletteLight()
+            {
+                Primary = "#007c84",
+                PrimaryDarken = "#007982",
+                PrimaryLighten = "#aec8d2",
+                // TextPrimary = "#f2f4f6",
+                // Secondary = "#ccd0d2",
+                // SecondaryDarken = "#a2a7a9",
+                // SecondaryLighten = "#e1e5e9",
+                // TextSecondary = "#000",
+                AppbarBackground = "#007c84",
+            }
+        };
+
+}

@@ -1,0 +1,23 @@
+﻿@typeparam T
+
+<div>@ChildContent</div>
+
+@code {
+
+    /// Reference to the parent component
+    [CascadingParameter(Name = "ParentComponent")]
+    CoreTable<T> ParentComponent { get; set; }
+
+    /// Child content of the component.
+    [Parameter]
+    public RenderFragment<T> ChildContent { get; set; }
+    
+    [Parameter]
+    public string Name { get; set; } 
+    
+    // add ChildComponent to ParentComponent
+    protected override void OnInitialized()
+    {
+        ParentComponent.AddEditableColumn(this);
+    }
+}
