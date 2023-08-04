@@ -1,0 +1,17 @@
+﻿@typeparam T
+
+<MudSelect T="T" 
+	Dense=true 
+	Label="@Label" 
+	Value=@Value 
+	ValueChanged="OnValueChanged" 
+	Disabled="@IsDisabled">
+	@ChildContent
+</MudSelect>
+
+@*<select @bind="@Value">
+	@foreach (var val in Enum.GetValues(typeof(TEnum)))
+	{
+		<option value="@val">@val</option>
+	}
+</select>*@

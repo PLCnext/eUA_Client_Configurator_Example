@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "eUAClientConfigurator": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\7wrmzc\\Desktop\\temp\\eUAClientConfigurator\\eUAClientConfigurator.exe",
+      "workingDirectory": "C:\\Users\\7wrmzc\\Desktop\\temp\\eUAClientConfigurator",
+      "remoteDebugEnabled": false
+    }
+  }
+}

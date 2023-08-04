@@ -1,0 +1,15 @@
+﻿@*<button 
+	class="btn btn-secondary"
+	@onclick="@Click" 
+	disabled="@IsDisabled">
+	@Text
+</button>
+*@
+@if (IsDefaultButton)
+{
+	<MudButton Variant="Variant.Text" Size="Size.Small" OnClick="@Click" Color="Color.Primary" Disabled=@IsDisabled>@Text</MudButton>
+}
+@if (!IsDefaultButton)
+{
+	<MudButton Variant="Variant.Text" Size="Size.Small" OnClick="@Click" Disabled=@IsDisabled>@Text</MudButton>
+}

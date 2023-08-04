@@ -1,0 +1,95 @@
+<xs:schema elementFormDefault="qualified" targetNamespace="http://phoenixcontact.com/OpcUA/PLCnext/UAClientConfig/Types.xsd" xmlns:tns="http://phoenixcontact.com/OpcUA/PLCnext/UAClientConfig/Types.xsd" xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd"/>
+    <xs:simpleType name="eUAClientGroupType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Subscribe_0"/>
+            <xs:enumeration value="Write_1"/>
+            <xs:enumeration value="Read_2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element type="tns:eUAClientGroupType" name="eUAClientGroupType"/>
+    <xs:complexType name="ListOfeUAClientGroupType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientGroupType" name="eUAClientGroupType" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientGroupType" name="ListOfeUAClientGroupType" nillable="true"/>
+    <xs:complexType name="eUAClientConfiguration">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:string" name="Name"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:ListOfString" name="NamespaceArray"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="tns:ListOfeUAClientServerConnection" name="ServerConnections"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="tns:ListOfeUAClientVariableGroup" name="VariableGroups"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:eUAClientConfiguration" name="eUAClientConfiguration"/>
+    <xs:complexType name="ListOfeUAClientConfiguration">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientConfiguration" name="eUAClientConfiguration" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientConfiguration" name="ListOfeUAClientConfiguration" nillable="true"/>
+    <xs:complexType name="eUAClientNodeMapping">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:NodeId" name="LocalVariable"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="tns:eUAClientRemoteVariableDescriptor" name="RemoteVariableDescriptor"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:eUAClientNodeMapping" name="eUAClientNodeMapping"/>
+    <xs:complexType name="ListOfeUAClientNodeMapping">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientNodeMapping" name="eUAClientNodeMapping" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientNodeMapping" name="ListOfeUAClientNodeMapping" nillable="true"/>
+    <xs:complexType name="eUAClientRemoteVariableDescriptor">
+        <xs:sequence>
+            <xs:element minOccurs="0" type="xs:unsignedInt" name="EncodingMask"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:string" name="DiscoveryEndpoint"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:short" name="ServerIndex"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:NodeId" name="NodeId"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:string" name="AliasName"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:NodeId" name="AliasReferenceTypeFilter"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:ListOfRelativePathElement" name="BrowsePath"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:eUAClientRemoteVariableDescriptor" name="eUAClientRemoteVariableDescriptor"/>
+    <xs:complexType name="ListOfeUAClientRemoteVariableDescriptor">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientRemoteVariableDescriptor" name="eUAClientRemoteVariableDescriptor" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientRemoteVariableDescriptor" name="ListOfeUAClientRemoteVariableDescriptor" nillable="true"/>
+    <xs:complexType name="eUAClientServerConnection">
+        <xs:sequence>
+            <xs:element minOccurs="0" type="xs:unsignedInt" name="EncodingMask"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:EndpointType" name="Endpoint"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="ua:UserTokenType" name="UserTokenType"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:string" name="UserName"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:string" name="Password"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:base64Binary" name="CertificateData"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:base64Binary" name="TokenData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:eUAClientServerConnection" name="eUAClientServerConnection"/>
+    <xs:complexType name="ListOfeUAClientServerConnection">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientServerConnection" name="eUAClientServerConnection" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientServerConnection" name="ListOfeUAClientServerConnection" nillable="true"/>
+    <xs:complexType name="eUAClientVariableGroup">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" type="tns:eUAClientGroupType" name="GroupType"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="xs:double" name="CycleTime"/>
+            <xs:element minOccurs="0" maxOccurs="1" type="tns:ListOfeUAClientNodeMapping" name="NodeMappings"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:eUAClientVariableGroup" name="eUAClientVariableGroup"/>
+    <xs:complexType name="ListOfeUAClientVariableGroup">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:eUAClientVariableGroup" name="eUAClientVariableGroup" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfeUAClientVariableGroup" name="ListOfeUAClientVariableGroup" nillable="true"/>
+</xs:schema>

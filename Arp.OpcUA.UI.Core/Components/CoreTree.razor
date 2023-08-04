@@ -1,0 +1,50 @@
+﻿@typeparam TNode
+
+<div class="uic-tree @(Visible ? "" : "uic-tree--hidden")">
+
+	@foreach (var node in Nodes ?? Enumerable.Empty<TNode>())
+	{
+		var nodeExpanded = ExpandedNodes.Contains(node);
+		var nodeSelected = node.Equals(SelectedNode);
+		var nodeDisabled = NodeDisabled(node);
+		var nodeLoading = loadingNodes.Contains(node);
+		var hasChilds = HasChildNodes(node);
+
+		<div>
+
+			@if (hasChilds)
+			{
+				<span class="uic-tree__icon" @onclick="@(() => OnToggleNode(node, !nodeExpanded))">
+					<i class="@(nodeLoading ? Style.NodeLoadingClass : nodeExpanded ? Style.CollapseNodeIconClass : Style.ExpandNodeIconClass)"></i>
+				</span>
+			}
+
+
+			<div class="uic-tree__title">
+				<input type="checkbox" @onchange="eventArgs => { CheckboxClicked(node, (bool)eventArgs.Value); }" />&nbsp;
+				<span class="@Style.NodeTitleClass @(nodeSelected ? Style.NodeTitleSelectedClass : nodeDisabled ? Style.NodeTitleDisabledClass : Style.NodeTitleSelectableClass)" @onclick="@(() => OnSelectNode(node))"
+					>@TitleTemplate(node)</span>
+			</div>
+
+			@if (hasChilds && nodeExpanded)
+			{
+				<CoreTree @key="node"
+						  Nodes="ChildSelector(node)"
+						  TitleTemplate="TitleTemplate"
+						  ChildSelector="ChildSelector"
+						  ExpandedNodes="ExpandedNodes"
+						  ExpandedNodesChanged="ExpandedNodesChanged"
+						  SelectedNode="SelectedNode"
+						  SelectedNodeChanged="SelectedNodeChanged"
+						  Visible="nodeExpanded"
+						  HasChildNodes="HasChildNodes"
+						  Style="Style"
+						  NodeDisabled="NodeDisabled"
+						  OnNodeExpand="OnNodeExpand"
+						  CheckboxClicked="CheckboxClicked" />
+			}
+
+		</div>
+	}
+
+</div>

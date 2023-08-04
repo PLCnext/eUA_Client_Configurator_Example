@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.86" />
+    <PackageReference Include="MudBlazor" Version="6.5.0" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <RootNameSpace>eUAClientConfigurator</RootNameSpace>
+    <IsPublishable>True</IsPublishable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Arp.OpcUA.ClientConfiguration\Arp.OpcUA.ClientConfiguration.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.Client\Arp.OpcUA.Client.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.Core\Arp.OpcUA.Core.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.ServerCatalog\Arp.OpcUA.ServerCatalog.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.ServerRepository\Arp.OpcUA.ServerRepository.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.UI.ClientConfiguration\Arp.OpcUA.UI.ClientConfiguration.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.UI.Core\Arp.OpcUA.UI.Core.csproj" />
+    <ProjectReference Include="..\Arp.OpcUA.UI.ServerCatalog\Arp.OpcUA.UI.ServerCatalog.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Update="ApplicationData\ServerConnections.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\app.css">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Opc.Ua.Client.Config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="ApplicationData\eUAClientConfigurations\" />
+  </ItemGroup>
+
+</Project>

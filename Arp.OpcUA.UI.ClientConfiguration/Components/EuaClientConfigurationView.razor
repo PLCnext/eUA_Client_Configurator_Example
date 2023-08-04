@@ -1,0 +1,135 @@
+﻿@if (configuration != null)
+{
+    <div>&nbsp;</div>
+    <CoreGrid>
+        <CoreGridItem xs="12">
+            <CoreTextBox Label="Name" @bind-Value="@configuration.Name" />
+            <CoreButton OnClick="@Create" Text="New" />
+            <CoreButton OnClick="@Load" Text="Load" />
+            <CoreButton OnClick="@Save" Text="Save" />
+            <CoreButton OnClick="@Export" Text="Export" />
+        </CoreGridItem>
+
+        <CoreGridItem xs="12">
+            <CoreText>Select the local OPC eUA Server for which the eUA Client shall be configured:</CoreText>
+                <CoreSelect Label="PLCnext with eUA Client" @bind-Value="localServerIndex">
+                @foreach (var server in uaClientService.Servers)
+                {
+                    <CoreSelectItem Value=@server.ServerIndex>@server.Name</CoreSelectItem>
+                }
+            </CoreSelect>
+        </CoreGridItem>
+
+        <h6>Groups</h6>
+        @foreach (var group in configuration.VariableGroups)
+        {
+            <CoreGridItem xs="12">
+                <CoreCard>
+                    <Header>
+                        <CoreSelect Label="Group type" @bind-Value="group.GroupType">
+                            <CoreSelectItem Value=@eUAClientGroupType.Write>Write to server</CoreSelectItem>
+                            <CoreSelectItem Value=@eUAClientGroupType.Subscribe>Subscribe from server</CoreSelectItem>
+                        </CoreSelect>
+                        <CoreTextBox Label="Cycle time" @bind-Value="group.CycleTime" />
+                        <CoreButton OnClick="@(()=>RemoveGroup(group))" Text="🗙" />
+                    </Header>
+                    <Content>
+                        <table class="mapping-table">
+                            <colgroup>
+                                <col style="width:50%">
+                                <col style="width:fit-content">
+                                <col style="width:50%">
+                                <col style="width:fit-content">
+                                <col style="width:fit-content">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Local Variable</th>
+                                    <th colspan="2">Remote Variable</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var mapping in group.VariableMappings)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (mapping.LocalVariable != null)
+                                            {
+                                                <span>@mapping.LocalVariable.DisplayPath</span>
+                                                <span style="color:darkgray"> @mapping.LocalVariable.DataType?.DisplayName</span>
+
+                                                <br />
+                                                <span style="color:darkgray">@mapping.LocalVariable.NodeId</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <CoreButton OnClick="@(()=>SelectLocalVariable(group, mapping))" Text="Browse" />
+                                        </td>
+                                        <td>
+                                            @if (mapping.RemoteVariable != null)
+                                            {
+                                                <span>@(mapping.RemoteVariable.DisplayPath ?? mapping.RemoteVariable.DisplayName)</span>
+                                                <span style="color:darkgray"> @mapping.RemoteVariable.DataType?.DisplayName</span>
+                                                <span> @@ @mapping.RemoteVariable.Server?.Name</span>
+                                                <br />
+                                                <span style="color:darkgray">@mapping.RemoteVariable.NodeId</span>
+                                            }
+                                        </td>
+                                        <td style="width:auto">
+                                            <CoreButton OnClick="@(()=>SelectRemoteVariable(group, mapping))" Text="Browse" />
+                                            <CoreButton OnClick="@(()=>EditRemoteVariable(group, mapping))" Text="Edit" />
+                                        </td>
+                                        <td>
+                                            <CoreButton OnClick="@(()=>RemoveMapping(group, mapping))" Text="🗙" />
+                                        </td>
+                                    </tr>
+                                }
+                                <tr><td colspan="4"><CoreButton OnClick="@(()=>AddMappings(group))" Text="Add Variables" /></td></tr>
+                            </tbody>
+
+                        </table>
+                    </Content>
+                </CoreCard>
+            </CoreGridItem>
+        }
+        <CoreGridItem xs="12">
+            <CoreButton OnClick="@AddGroup" Text="Add Group" />
+        </CoreGridItem>
+    </CoreGrid>
+}
+
+@if (Messages != null)
+{
+    foreach (var msg in Messages)
+    {
+        <div>@msg</div>
+    }
+}
+<CoreDialog @ref=localBrowserDlg OnClose=ApplyLocalBrowser Title="Select local variable">
+    <UABrowserView @ref=localBrowser
+                   BrowseFunction="@configurator.BrowseExternalVariables"
+                   BrowseFilter="localBrowseFilter"
+                   ShowServerSelector=false
+                   Server="localServerIndex" />
+</CoreDialog>
+
+<CoreDialog @ref=remoteBrowserDlg OnClose=ApplyRemoteBrowser Title="Select remote variable">
+    <UABrowserView @ref=remoteBrowser
+                   BrowseFunction="@configurator.BrowseExternalVariables"
+                   BrowseFilter="remoteBrowseFilter"
+                   ShowServerSelector=true />
+</CoreDialog>
+
+<CoreDialog @ref=remoteEditDlg OnClose=ApplyRemoteEditor Title="Select remote variable">
+    <CoreTextBox Placeholder="ProductName" Label="Name" @bind-Value="editRemoteName" />
+    <select @bind="@editRemoteServer">
+        @foreach (var server in uaClientService.Servers)
+        {
+            <option value="@server.Name">@server.Name</option>
+        }
+    </select>
+
+    <CoreTextBox Placeholder="http://opcfoundation.org/UA/" Label="Namespace" @bind-Value="editRemoteNodeIdNamespace" />
+    <CoreTextBox Placeholder="i=2261" Label="NodeId" @bind-Value="editRemoteNodeIdentifier" />
+</CoreDialog>

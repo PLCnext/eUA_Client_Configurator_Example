@@ -1,0 +1,16 @@
+﻿@if (ShowServerSelector)
+{
+	<select @bind="Server">
+		@foreach (var server in Servers)
+		{
+			<option value="@server.ServerIndex">@server.Name</option>
+		}
+	</select>
+}
+<CoreTree Nodes="BrowseNodes"
+	  OnNodeExpand="OnNodeExpand"
+	  HasChildNodes="HasChilds"
+	  ChildSelector="item => item.Childs"
+	  CheckboxClicked="CheckboxClicked">
+	<TitleTemplate>@context.DisplayName</TitleTemplate>
+</CoreTree>

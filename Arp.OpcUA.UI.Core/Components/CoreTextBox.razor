@@ -1,0 +1,14 @@
+﻿@typeparam T
+
+@*<input @bind-value=@Value
+	   Placehoder=@Placeholder
+	   @oninput=@OnValueChanged
+	   disabled="@IsDisabled" />*@
+@if(IsPassword)
+{
+	<MudTextField T="T" Value=@Value ValueChanged="OnValueChanged" Label=@Label Disabled=@IsDisabled InputType="InputType.Password" />
+}
+@if(!IsPassword)
+{
+	<MudTextField T="T" Value=@Value ValueChanged="OnValueChanged" Placeholder=@Placeholder Label=@Label Disabled=@IsDisabled />
+}
