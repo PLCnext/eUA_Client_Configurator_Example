@@ -35,6 +35,8 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 
 ### 1.1. Connections
 
+First, at least two endpoints must be created that can communicate with each other.
+
 ![Overview of existing servers](README/eUAClient Configurator UI_00.png)
 
 1.) Already added servers can be tested via the test button. The application then tries to establish a connection to the server.
@@ -42,6 +44,21 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 2.) With the add server button more servers can be added.
 
 ![Overview of existing servers](README/eUAClient Configurator UI_01.png)
+
+1.) Name of the server.
+
+2.) URL of the server in the format 'opc.tcp://192.168.1.10:4840'
+
+3.) User name for the server authentication.
+
+4.) Password for the server authentication.
+
+5.) Security mode.
+
+6.) Security policy.
+
+7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
+
 
 ### 1.2. Client configuration
 
