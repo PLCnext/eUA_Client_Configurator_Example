@@ -80,8 +80,15 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 ![Overview of existing servers](README/eUAClient Configurator UI_03.png)
 
-1.) Name
+1.) Type of the variable group can be 'subscribe from server' or 'write to server'.
 
+2.) Cycle time.
+
+3.) Local variables at client end.
+
+4.) Remote variables which are linked to the corresponding local variables 
+
+5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
 
 ## 2. Code description
 
