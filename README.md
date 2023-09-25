@@ -30,9 +30,7 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 - PLCnext Engineer version 2023.0.0 or later.
 - Microsoft Visual Studio 2022
 
-## 1. Program description
-
-### 1.1. Connections
+## 1. Connections
 
 First, at least two endpoints must be created that can communicate with each other.
 
@@ -58,7 +56,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
 
-### 1.2. Client configuration
+## 2. Client configuration
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
@@ -90,7 +88,15 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
 
-## 2. Code description
+![Overview of existing servers](README/eUAClient Configurator UI_04.png)
+Select window for local variables on client end.
+
+![Overview of existing servers](README/eUAClient Configurator UI_05.png)
+Select window for remote variables. The server can be selected via the selection above.
+
+![Overview of existing servers](README/eUAClient Configurator UI_06.png)
+
+
 
 
 
