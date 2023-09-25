@@ -1,0 +1,13 @@
+AXC F 2152
+	User: admin	
+	PW: 5299876f
+	IP: 192.168.1.10
+
+AXC F 3152
+	User: admin	
+	PW: 9ade4055
+	IP: 192.168.1.11
+
+Netzwerkkabel:
+	1: Von PC zu AXC F 2152 X1
+	2: Von AXC F 2152 X2 zu AXC F 3152 X1

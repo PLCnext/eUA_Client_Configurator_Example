@@ -30,7 +30,37 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 - PLCnext Engineer version 2023.0.0 or later.
 - Microsoft Visual Studio 2022
 
-## 1. Connections
+## 1. Quickstart
+You need the following Hardware and Software Configuration:
+
+- AXC F 2152/3152 with IP: 192.168.1.10 and Firmware >= 2023
+- AXC F 2152/3152 with IP: 192.168.1.11 and Firmware >= 2023
+- PC with PLCnext Engineer Version >= 2023.6
+
+Use the Sample Projects in the Folder .\Simple Client Sample. In this Sample there is a AXC F 2152 (192.168.1.10) serving as OPC UA Server and a AXC F 3152 (192.168.1.11) serving as Client. Adjust the Sample Project to your controller hardware if needed. Connect to your controllers and load the sample projects into them.
+
+Now open the eUA Client Configurator and configure your controllers as follows:
+
+Name: AXC F 2152
+URL: opc.tcp://192.168.1.10:4840
+User Name: <admin>
+Password: <controller passwort for admin>
+Security Mode: SignAndEncrypt
+Security Policy: Aes256_Sha256_RsaPss
+
+Name: AXC F 3152
+URL: opc.tcp://192.168.1.11:4840
+User Name: <admin>
+Password: <controller passwort for admin>
+Security Mode: SignAndEncrypt
+Security Policy: Aes256_Sha256_RsaPss
+
+
+
+
+## 2. UI Description
+
+### 2.1. Connections
 
 First, at least two endpoints must be created that can communicate with each other.
 
@@ -56,7 +86,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
 
-## 2. Client configuration
+### 2.2. Client configuration
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
