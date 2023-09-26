@@ -41,19 +41,19 @@ Use the Sample Projects in the Folder .\Simple Client Sample. In this Sample the
 
 Now open the eUA Client Configurator, switch to the 'Servers' tab and configure your controllers as follows:
 
-- Name: AXC F 2152
-- URL: opc.tcp://192.168.1.10:4840
-- User Name: <admin>
-- Password: <controller passwort for admin>
-- Security Mode: SignAndEncrypt
-- Security Policy: Aes256_Sha256_RsaPss
+Name: AXC F 2152  
+URL: opc.tcp://192.168.1.10:4840  
+User Name: <admin>  
+Password: <controller passwort for admin>  
+Security Mode: SignAndEncrypt  
+Security Policy: Aes256_Sha256_RsaPss  
 
-- Name: AXC F 3152
-- URL: opc.tcp://192.168.1.11:4840
-- User Name: <admin>
-- Password: <controller passwort for admin>
-- Security Mode: SignAndEncrypt
-- Security Policy: Aes256_Sha256_RsaPss
+Name: AXC F 3152  
+URL: opc.tcp://192.168.1.11:4840  
+User Name: <admin>  
+Password: <controller passwort for admin>  
+Security Mode: SignAndEncrypt  
+Security Policy: Aes256_Sha256_RsaPss  
 
 The configuration should now look like in the following figure:
 
