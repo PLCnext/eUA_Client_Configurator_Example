@@ -76,9 +76,18 @@ Use a tool like WinSCP to connect to the file system of the AXC F 3152 (or the c
 
 Now restart the controller through power Off/On. After startup your client configuration should work.
 
-## 2. UI Description
+## 2. Description of the client configuration file
 
-### 2.1. Connections
+In this section the client configuration file, which can be created and exported with the eUA Client Configurator is described. The following figure shows the file exported from the simple client sample configuration mentioned in section 1 - Quickstart.
+
+![Config File of the simple client sample](README/config file_V00.png)
+
+The file is se
+
+
+## 3. UI Description
+
+### 3.1. Connections
 
 First, at least two endpoints must be created that can communicate with each other.
 
@@ -104,7 +113,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
 
-### 2.2. Client configuration
+### 3.2. Client configuration
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
