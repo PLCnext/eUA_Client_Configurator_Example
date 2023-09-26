@@ -136,10 +136,10 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
 
-![Overview of existing servers](README/eUAClient Configurator UI_04.png)
+![Overview of existing servers](README/eUAClient Configurator UI_04.png)  
 Select window for local variables on client end.
 
-![Overview of existing servers](README/eUAClient Configurator UI_05.png)
+![Overview of existing servers](README/eUAClient Configurator UI_05.png)  
 Select window for remote variables. The server can be selected via the selection above.
 
 ![Overview of existing servers](README/eUAClient Configurator UI_06.png)
