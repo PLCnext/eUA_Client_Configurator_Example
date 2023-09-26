@@ -39,26 +39,33 @@ You need the following Hardware and Software Configuration:
 
 Use the Sample Projects in the Folder .\Simple Client Sample. In this Sample there is a AXC F 2152 (192.168.1.10) serving as OPC UA Server and a AXC F 3152 (192.168.1.11) serving as Client. Adjust the Sample Project to your controller hardware if needed. Connect to your controllers and load the sample projects into them.
 
-Now open the eUA Client Configurator and configure your controllers as follows:
+Now open the eUA Client Configurator, switch to the 'Servers' tab and configure your controllers as follows:
 
-Name: AXC F 2152
-URL: opc.tcp://192.168.1.10:4840
-User Name: <admin>
-Password: <controller passwort for admin>
-Security Mode: SignAndEncrypt
-Security Policy: Aes256_Sha256_RsaPss
+- Name: AXC F 2152
+- URL: opc.tcp://192.168.1.10:4840
+- User Name: <admin>
+- Password: <controller passwort for admin>
+- Security Mode: SignAndEncrypt
+- Security Policy: Aes256_Sha256_RsaPss
 
-Name: AXC F 3152
-URL: opc.tcp://192.168.1.11:4840
-User Name: <admin>
-Password: <controller passwort for admin>
-Security Mode: SignAndEncrypt
-Security Policy: Aes256_Sha256_RsaPss
+- Name: AXC F 3152
+- URL: opc.tcp://192.168.1.11:4840
+- User Name: <admin>
+- Password: <controller passwort for admin>
+- Security Mode: SignAndEncrypt
+- Security Policy: Aes256_Sha256_RsaPss
 
 The configuration should now look like in the following figure:
 
-![Configuration of the simple client sample](README/quickstart_00.png)
+![Configuration of the simple Client Sample](README/quickstart_00.png)
 
+Now switch to the 'Groups' tab to configure the variable groups. In the drop down list 'PLCnext with eUA Client' select the AXC F 3152 (or the controller which serves as client in your configuration). Add two groups, one with group type 'subscribe from server' and the other one with group type 'write to server'. With a click on the browse button now select the following variables:
+
+
+|Group     | Local Variable  | Remote Variable  |
+|----------|-----------------|------------------|
+|Subscribe | iSubscribeVar   | iSubscribedVar   |
+|Write     | iWriteVar       | iWrittenVar      |
 
 ## 2. UI Description
 
