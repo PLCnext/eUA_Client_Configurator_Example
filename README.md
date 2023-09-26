@@ -55,7 +55,9 @@ Password: <controller passwort for admin>
 Security Mode: SignAndEncrypt
 Security Policy: Aes256_Sha256_RsaPss
 
+The configuration should now look like in the following figure:
 
+![Configuration of the simple client sample](README/quickstart_00.png)
 
 
 ## 2. UI Description
