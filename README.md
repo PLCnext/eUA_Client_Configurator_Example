@@ -61,11 +61,20 @@ The configuration should now look like in the following figure:
 
 Now switch to the 'Groups' tab to configure the variable groups. In the drop down list 'PLCnext with eUA Client' select the AXC F 3152 (or the controller which serves as client in your configuration). Add two groups, one with group type 'subscribe from server' and the other one with group type 'write to server'. With a click on the browse button now select the following variables:
 
+|Group     | Local Variable (Client)  | Remote Variable (Server) |
+|----------|--------------------------|--------------------------|
+|Subscribe | iSubscribeVar            | iSubscribedVar           |
+|Write     | iWriteVar                | iWrittenVar              |
 
-|Group     | Local Variable  | Remote Variable  |
-|----------|-----------------|------------------|
-|Subscribe | iSubscribeVar   | iSubscribedVar   |
-|Write     | iWriteVar       | iWrittenVar      |
+The configuration should now look like in the following figure:
+
+![Variable configuration of the simple Client Sample](README/quickstart_01.png)
+
+Now use the export button to export the configuration in a .xml file. 
+
+Use a tool like WinSCP to connect to the file system of the AXC F 3152 (or the controller which serves as client in your configuration). Browse to the following folder: /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/Configs/ and copy the exported .xml file to here. 
+
+Now restart the controller through power Off/On. After startup your client configuration should work.
 
 ## 2. UI Description
 
