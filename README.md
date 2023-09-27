@@ -23,12 +23,17 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 
 - [Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/)
 - [OPC UA information model](https://www.plcnext.help/te/Service_Components/OPC_UA_Server/OPCUA_information_models.htm)
+- [Client License in the PLCnext Store] (https://www.plcnextstore.com/eu/app/1938)
+- [Client Configuration in the PLCnext Infocenter] (https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm)
 
 ## III. Prerequisites for this example
 
 - Two PLCnext Control devices with firmware 2023.0.0 or later, and at least one Axioline I/O module.
 - PLCnext Engineer version 2023.0.0 or later.
-- Microsoft Visual Studio 2022
+- Microsoft Visual Studio 2022.
+- OPC Client must be activated in the WBM of the controllers. See the following figure:
+
+![Activation of the Client in the WBM](README/WBM_00.PNG)
 
 ## 1. Quickstart
 You need the following Hardware and Software Configuration:
@@ -164,7 +169,7 @@ This section describes where in the file system of the controller OPC UA client 
 
 The file system of the PLCnext Controller can be entered using a tool like WinSCP. The following figure shows how to establish a connection to the controller.
 
-![Using WinSCP](README/WinSCP_V00.PNG){width=40%}  
+![Using WinSCP](README/WinSCP_V00.PNG){width=60%}  
 
 1.) IP-Address of the PLCnext controller.
 
