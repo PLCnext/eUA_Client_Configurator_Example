@@ -98,7 +98,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 2.) With the add server button more servers can be added.
 
-![Overview of existing servers](README/eUAClient Configurator UI_01.png)
+![Add server](README/eUAClient Configurator UI_01.png)
 
 1.) Name of the server.
 
@@ -118,7 +118,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
-![Overview of existing servers](README/eUAClient Configurator UI_02.png)
+![Add variable group](README/eUAClient Configurator UI_02.png)
 
 1.) Name of the variable group configuration.
 
@@ -134,7 +134,7 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 7.) With a click on the add group button a new variable group can be added to the configuration.
 
-![Overview of existing servers](README/eUAClient Configurator UI_03.png)
+![Add variables](README/eUAClient Configurator UI_03.png)
 
 1.) Type of the variable group can be 'subscribe from server' or 'write to server'.
 
@@ -146,17 +146,49 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
 
-![Overview of existing servers](README/eUAClient Configurator UI_04.png)  
+![Variable mapping](README/eUAClient Configurator UI_06.png)
+
+With a click on the browse button the selection windows for local (Client) and remote variables (Server) opens.
+
+![Local variable selection](README/eUAClient Configurator UI_04.png)  
+
 Select window for local variables on client end.
 
-![Overview of existing servers](README/eUAClient Configurator UI_05.png)  
+![Remote variable selection](README/eUAClient Configurator UI_05.png)  
+
 Select window for remote variables. The server can be selected via the selection above.
 
-![Overview of existing servers](README/eUAClient Configurator UI_06.png)
+## 4. Configuration on the file system of the controller
 
+This section describes where in the file system of the controller OPC UA client configurations can be found and where the OPC UA client configuration generated with the eUA Client Configurator have to be stored. 
 
+The file system of the PLCnext Controller can be entered using a tool like WinSCP. The following figure shows how to establish a connection to the controller.
 
+![Using WinSCP](README/WinSCP_V00.PNG)  
 
+1.) IP-Address of the PLCnext controller.
+
+2.) Username of the PLCnext controller.
+
+3.) Password of the PLCnext controller.
+
+The generated client configuration has to be stored to /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/Configs/ see the following figure.
+
+![Client configuration on the file system of the controller](README/PLCnext Config_02.PNG)
+
+However there are some more paths which are also relevant for OPC UA client configuration, but not necessary in combination with the eUA Client Configurator.
+
+In the following path a configuration file for the general client settings can be stored. If there is no file here and there is also no configuration in the PLCnext Engineer project on the controller, then the default settings are used.
+
+/opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/
+
+This path contains the configuration file for the general client settings from the PLCnext Engineer project.
+
+/opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/
+
+This path contains the configuration file for the client connections configuration from the PLCnext Engineer project.
+
+/opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/Configs/
 
 ## IV. Problems?
 
