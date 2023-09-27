@@ -82,10 +82,11 @@ In this section the client configuration file, which can be created and exported
 
 ![Config File of the simple client sample](README/config file_V00.PNG)
 
-The file is se
-
+The file is seperated into the two nodes <ServerConnections> and <VariableGroups>. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. 
 
 ## 3. UI Description
+
+In this section the user interface of the eUA Client Configurator is described in detail, but not the engineering workflow. Therefere go to section 1 - Quickstart.
 
 ### 3.1. Connections
 
