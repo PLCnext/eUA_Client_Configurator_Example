@@ -4,11 +4,7 @@
 [![Web](https://img.shields.io/badge/PLCnext-Website-blue.svg)](https://www.phoenixcontact.com/plcnext)
 [![Community](https://img.shields.io/badge/PLCnext-Community-blue.svg)](https://www.plcnext-community.net)
 
-This procedure describes the basic steps for creating an OPC UA method.
-
-In this example, the OPC UA method will be used to call a PLCnext Engineer function block instance from an OPC UA client.
-
-The procedure uses a custom OPC UA "Information Model", which in this case is generated using the UaModeler tool from Unified Automation. This technique can also be applied when using [standard OPC UA information models](https://opcfoundation.org/developer-tools/specifications-opc-ua-information-models) for various industries and applications.
+With this tool you can generate OPC UA Client configurations for PLCnext controllers.
 
 ## I. Project details
 
@@ -23,8 +19,8 @@ The procedure uses a custom OPC UA "Information Model", which in this case is ge
 
 - [Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/)
 - [OPC UA information model](https://www.plcnext.help/te/Service_Components/OPC_UA_Server/OPCUA_information_models.htm)
-- [Client License in the PLCnext Store] (https://www.plcnextstore.com/eu/app/1938)
-- [Client Configuration in the PLCnext Infocenter] (https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm)
+- [Client License in the PLCnext Store](https://www.plcnextstore.com/eu/app/1938)
+- [Client Configuration in the PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm)
 
 ## III. Prerequisites for this example
 
@@ -197,10 +193,10 @@ This path contains the configuration file for the client connections configurati
 
 ## IV. Problems?
 
-- [Check the Output.log file](https://pxc1.esc-eu-central-1.empolisservices.com/service-express/portal/project1_p/document/iu-45-85e4a3ef-5699-4c4f-b7b9-4a04246e53d3?context=%7B%7D) on the PLC for messages from the OPC UA server.
+- [Check the Output.log file](https://pxc1.esc-eu-central-1.empolisservices.com/service-express/portal/project1_p/document/iu-45-85e4a3ef-5699-4c4f-b7b9-4a04246e53d3?context=%7B%7D) on the PLC for messages from the OPC UA Client.
 - Ask for help in the [PLCnext Community Forum](https://www.plcnext-community.net/en/discussions-2-offcanvas/forums.html).
 
-If you find a mistake in this procedure, or if you would like to suggest improvements or new features, please [open an issue](https://github.com/PLCnext/OpcUaMethods/issues).
+If you find a mistake in this procedure, or if you would like to suggest improvements or new features, please [open an issue](https://github.com/PLCnext/eUAClientConfigurator/issues).
 
 ## V. License
 
