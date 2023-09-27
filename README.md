@@ -80,7 +80,7 @@ Now restart the controller through power Off/On. After startup your client confi
 
 In this section the client configuration file, which can be created and exported with the eUA Client Configurator is described. The following figure shows the file exported from the simple client sample configuration mentioned in section 1 - Quickstart.
 
-![Config File of the simple client sample](README/config file_V00.png)
+![Config File of the simple client sample](README/config file_V00.PNG)
 
 The file is se
 
