@@ -164,7 +164,7 @@ This section describes where in the file system of the controller OPC UA client 
 
 The file system of the PLCnext Controller can be entered using a tool like WinSCP. The following figure shows how to establish a connection to the controller.
 
-![Using WinSCP](README/WinSCP_V00.PNG)  
+![Using WinSCP](README/WinSCP_V00.PNG){width=40%}  
 
 1.) IP-Address of the PLCnext controller.
 
@@ -178,15 +178,15 @@ The generated client configuration has to be stored to /opt/plcnext/projects/Def
 
 However there are some more paths which are also relevant for OPC UA client configuration, but not necessary in combination with the eUA Client Configurator.
 
-In the following path a configuration file for the general client settings can be stored. If there is no file here and there is also no configuration in the PLCnext Engineer project on the controller, then the default settings are used.
+In the following path a configuration file for the general client settings can be stored. If there is no file here and there is also no configuration in the PLCnext Engineer project on the controller, then the default settings are used:
 
 /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/
 
-This path contains the configuration file for the general client settings from the PLCnext Engineer project.
+This path contains the configuration file for the general client settings from the PLCnext Engineer project:
 
 /opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/
 
-This path contains the configuration file for the client connections configuration from the PLCnext Engineer project.
+This path contains the configuration file for the client connections configuration from the PLCnext Engineer project:
 
 /opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/Configs/
 
