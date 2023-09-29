@@ -9,7 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.pptx
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -387,3 +386,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Ignore all files with the specified extension.
+*.pptx
