@@ -386,6 +386,3 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
-
-# Ignore all files with the specified extension.
-*.pptx
