@@ -6,6 +6,14 @@
 
 With this tool you can generate OPC UA Client configurations for PLCnext controllers.
 
+Content:
+[1. Quickstart](## 1. Quickstart)  
+[2. Description of the client configuration file](## 2. Description of the client configuration file)  
+[3. Detailed UI Description](## 3. Detailed UI Description)  
+[3.1. Connections](### 3.1. Connections)  
+[3.2. Client configuration](### 3.2. Client configuration)  
+[4. Configuration on the file system of the controller](## 4. Configuration on the file system of the controller)  
+
 ## I. Project details
 
 |Description   | Value      |
@@ -83,9 +91,9 @@ In this section the client configuration file, which can be created and exported
 
 ![Config File of the simple client sample](README/config file_V00.PNG)
 
-The file is seperated into the two nodes <ServerConnections> and <VariableGroups>. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. 
+The file is seperated into the two nodes '<ServerConnections>' and '<VariableGroups>'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
 
-## 3. UI Description
+## 3. Detailed UI Description
 
 In this section the user interface of the eUA Client Configurator is described in detail, but not the engineering workflow. Therefere go to section 1 - Quickstart.
 
@@ -111,7 +119,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 5.) Security mode.
 
-6.) Security policy.
+6.) Security policy (This must not be 'none' with PLCnext controller). 
 
 7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
 
@@ -121,7 +129,7 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 ![Add variable group](README/eUAClient Configurator UI_02.png)
 
-1.) Name of the variable group configuration.
+1.) Project name.
 
 2.) With a click on the new button a new variable group configuration will be created. The present variable group configuration will be discarded.
 

@@ -26,6 +26,21 @@ namespace Arp.OpcUA.ServerCatalog
                 servers = await serverRepository.GetAllServers();
 
             uaClientService.ClearServers();
+            if (servers == null)
+            {
+                servers = new List<ServerConnectionModel>();
+
+                servers.Add(new ServerConnectionModel()
+                {
+                    Enabled = true,
+                    Name = "AXC F 2152",
+                    Url = "opc.tcp://192.168.1.10:4840",
+                    UserName = "admin",
+                    SecurityMode =
+                    Opc.Ua.MessageSecurityMode.SignAndEncrypt
+                });
+            }
+
             foreach (var svr in servers.Where(svr => svr.Enabled))
                 uaClientService.AddServer(svr);
         }

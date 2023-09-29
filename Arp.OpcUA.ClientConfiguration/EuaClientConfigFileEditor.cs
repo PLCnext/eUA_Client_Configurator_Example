@@ -199,8 +199,14 @@ namespace Arp.OpcUA.ClientConfiguration
                 };
                 configuration.ServerConnections.Add(serverConnection);
             }
+            
             serverConnection.UserName = userName;
             serverConnection.Password = password;
+
+            if (string.IsNullOrEmpty(userName))
+                serverConnection.UserTokenType = UserTokenType.Anonymous;
+            else
+                serverConnection.UserTokenType = UserTokenType.UserName;
         }
         /// <summary>
         /// Removes a server from the configuration.
