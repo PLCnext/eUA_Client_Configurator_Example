@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.86" />
     <PackageReference Include="MudBlazor" Version="6.5.0" />
   </ItemGroup>
@@ -16,6 +20,7 @@
     <RootNameSpace>eUAClientConfigurator</RootNameSpace>
     <IsPublishable>True</IsPublishable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   
   <ItemGroup>
@@ -30,9 +35,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Content Update="ApplicationData\ServerConnections.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="wwwroot\css\app.css">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -42,10 +44,6 @@
     <None Update="Opc.Ua.Client.Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="ApplicationData\eUAClientConfigurations\" />
   </ItemGroup>
 
 </Project>
