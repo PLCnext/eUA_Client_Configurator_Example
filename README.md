@@ -6,7 +6,7 @@
 
 With this tool you can generate OPC UA Client configurations for PLCnext controllers.
 
-Content:
+Content:  
 [1. Quickstart](## 1. Quickstart)  
 [2. Description of the client configuration file](## 2. Description of the client configuration file)  
 [3. Detailed UI Description](## 3. Detailed UI Description)  
@@ -91,7 +91,7 @@ In this section the client configuration file, which can be created and exported
 
 ![Config File of the simple client sample](README/config file_V00.PNG)
 
-The file is seperated into the two nodes '<ServerConnections>' and '<VariableGroups>'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
+The file is seperated into the two nodes 'ServerConnections' and 'VariableGroups'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
 
 ## 3. Detailed UI Description
 
