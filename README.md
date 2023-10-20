@@ -12,7 +12,7 @@ Content:
 [3. Detailed UI Description](#3-detailed-ui-description)  
 [3.1. Connections](#31-connections)  
 [3.2. Client configuration](#32-client-configuration)  
-[4. Configuration on the file system of the controller](#4-configuration-on-the-file-system-of-the-controller)  
+[4. Configuration of the file system of the controller](#4-configuration-of-the-file-system-of-the-controller)  
 [5. Brief description of the program code](#5-brief-description-of-the-program-code)  
 
 ## I. Project details
@@ -168,7 +168,7 @@ Select window for local variables on client end.
 
 Select window for remote variables. The server can be selected via the selection above.
 
-## 4. Configuration on the file system of the controller
+## 4. Configuration of the file system of the controller
 
 This section describes where in the file system of the controller OPC UA client configurations can be found and where the OPC UA client configuration generated with the eUA Client Configurator have to be stored. 
 
