@@ -13,6 +13,7 @@ Content:
 [3.1. Connections](### 3.1. Connections)  
 [3.2. Client configuration](### 3.2. Client configuration)  
 [4. Configuration on the file system of the controller](## 4. Configuration on the file system of the controller)  
+[5. Brief description of the program code](## 5. Brief description of the program code)  
 
 ## I. Project details
 
@@ -199,6 +200,23 @@ This path contains the configuration file for the client connections configurati
 
 /opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/Configs/
 
+## 5. Brief description of the program code
+
+The solution consists of the following projects:
+
+ - Apps/eUAClientConfigurator: The main executable as ASP.NET Core Web Application  
+ - The Core folder contains some common projects, which are used by other parts of the solution  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.Clore: Abstraction of a minimalistic OPC UA Client  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.Client: Implementation of the OPC UA Client  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.Core: Common Blazor UI components which are used for the UI projects  
+ - The eUAClientConfig folder contains projects for the eUA Client configuration  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ClientConfiguration: The implementation of the client configuration  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.ClientConfiguration: A user interface for the eUA Client configuration  
+ - The ServerCatalog folder contains projects for managing a list of OPC UA Servers  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ServerCatalog: Collection of servers with name and access information  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ServerRepository: Persistence of the server catalog as a JSON file  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.ServerCatalog: Blazor based UI for editing the server catalog  
+ 
 ## IV. Problems?
 
 - [Check the Output.log file](https://pxc1.esc-eu-central-1.empolisservices.com/service-express/portal/project1_p/document/iu-45-85e4a3ef-5699-4c4f-b7b9-4a04246e53d3?context=%7B%7D) on the PLC for messages from the OPC UA Client.
