@@ -15,7 +15,7 @@ Content:
 [4. Configuration on the file system of the controller](##4. Configuration on the file system of the controller)  
 [5. Brief description of the program code](#5-brief-description-of-the-program-code)  
 
-##I. Project details
+## I. Project details
 
 |Description   | Value      |
 |--------------|------------|
@@ -24,14 +24,14 @@ Content:
 |Controller    | AXC F 1152; AXC F 2152; AXC F 3152 |
 |Firmware      | 2023.0 LTS |
 
-##II. Background reading
+## II. Background reading
 
 - [Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/)
 - [OPC UA information model](https://www.plcnext.help/te/Service_Components/OPC_UA_Server/OPCUA_information_models.htm)
 - [Client License in the PLCnext Store](https://www.plcnextstore.com/eu/app/1938)
 - [Client Configuration in the PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm)
 
-##III. Prerequisites for this example
+## III. Prerequisites for this example
 
 - Two PLCnext Control devices with firmware 2023.0.0 or later, and at least one Axioline I/O module.
 - PLCnext Engineer version 2023.0.0 or later.
@@ -40,7 +40,7 @@ Content:
 
 ![Activation of the Client in the WBM](README/WBM_00.PNG)
 
-##1. Quickstart
+## 1. Quickstart
 You need the following Hardware and Software Configuration:
 
 - AXC F 2152/3152 with IP: 192.168.1.10 and Firmware >= 2023
@@ -86,7 +86,7 @@ Use a tool like WinSCP to connect to the file system of the AXC F 3152 (or the c
 
 Now restart the controller through power Off/On. After startup your client configuration should work.
 
-##2. Description of the client configuration file
+## 2. Description of the client configuration file
 
 In this section the client configuration file, which can be created and exported with the eUA Client Configurator is described. The following figure shows the file exported from the simple client sample configuration mentioned in section 1 - Quickstart.
 
@@ -94,11 +94,11 @@ In this section the client configuration file, which can be created and exported
 
 The file is seperated into the two nodes 'ServerConnections' and 'VariableGroups'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
 
-##3. Detailed UI Description
+## 3. Detailed UI Description
 
 In this section the user interface of the eUA Client Configurator is described in detail, but not the engineering workflow. Therefere go to section 1 - Quickstart.
 
-###3.1. Connections
+### 3.1. Connections
 
 First, at least two endpoints must be created that can communicate with each other.
 
@@ -124,7 +124,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
 
-###3.2. Client configuration
+### 3.2. Client configuration
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
@@ -168,7 +168,7 @@ Select window for local variables on client end.
 
 Select window for remote variables. The server can be selected via the selection above.
 
-##4. Configuration on the file system of the controller
+## 4. Configuration on the file system of the controller
 
 This section describes where in the file system of the controller OPC UA client configurations can be found and where the OPC UA client configuration generated with the eUA Client Configurator have to be stored. 
 
@@ -200,7 +200,7 @@ This path contains the configuration file for the client connections configurati
 
 /opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/Configs/
 
-##5. Brief description of the program code
+## 5. Brief description of the program code
 
 The solution consists of the following projects:
 
@@ -221,14 +221,14 @@ The following figure shows the software architecture:
 
 ![Architecture of the software](README/Assemblies.png)
  
-##IV. Problems?
+## IV. Problems?
 
 - [Check the Output.log file](https://pxc1.esc-eu-central-1.empolisservices.com/service-express/portal/project1_p/document/iu-45-85e4a3ef-5699-4c4f-b7b9-4a04246e53d3?context=%7B%7D) on the PLC for messages from the OPC UA Client.
 - Ask for help in the [PLCnext Community Forum](https://www.plcnext-community.net/en/discussions-2-offcanvas/forums.html).
 
 If you find a mistake in this procedure, or if you would like to suggest improvements or new features, please [open an issue](https://github.com/PLCnext/eUAClientConfigurator/issues).
 
-##V. License
+## V. License
 
 Copyright (c) Phoenix Contact GmbH & Co KG. All rights reserved.
 
