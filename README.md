@@ -10,7 +10,7 @@ Content:
 [1. Quickstart](##1.-quickstart)  
 [2. Description of the client configuration file](##2. Description of the client configuration file)  
 [3. Detailed UI Description](##3. Detailed UI Description)  
-[3.1. Connections](###31-connections)  
+[3.1. Connections](#31-connections)  
 [3.2. Client configuration](###3.2. Client configuration)  
 [4. Configuration on the file system of the controller](##4. Configuration on the file system of the controller)  
 [5. Brief description of the program code](##5. Brief description of the program code)  
