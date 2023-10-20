@@ -13,7 +13,7 @@ Content:
 [3.1. Connections](#31-connections)  
 [3.2. Client configuration](#32-client-configuration)  
 [4. Configuration on the file system of the controller](##4. Configuration on the file system of the controller)  
-[5. Brief description of the program code](##5. Brief description of the program code)  
+[5. Brief description of the program code](#5-brief-description-of-the-program-code)  
 
 ##I. Project details
 
