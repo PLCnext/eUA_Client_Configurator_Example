@@ -13,7 +13,10 @@ namespace Arp.OpcUA.ServerRepository
 {
     public class JsonServerRepositoryService : IServerRepositoryService
     {
-        private const string ServerConnectionsFile = "ApplicationData\\ServerConnections.json";
+        private string ServerConnectionsFolder = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "eUAClientConfigurator");
+        private string ServerConnectionsFile = "ServerConnections.json";
         IList<ServerConnectionModel> servers;
         private readonly ILogger<JsonServerRepositoryService> logger;
 
@@ -33,9 +36,9 @@ namespace Arp.OpcUA.ServerRepository
         {
             try
             {
-                return Deserialize(File.ReadAllText(ServerConnectionsFile));
+                return Deserialize(File.ReadAllText(Path.Combine(ServerConnectionsFolder, ServerConnectionsFile)));
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
                 logger.LogError(ex, "Error reading ServerConnections.json");
                 return null;
@@ -68,11 +71,14 @@ namespace Arp.OpcUA.ServerRepository
         {
             try
             {
-                File.WriteAllText(ServerConnectionsFile, Serialize(servers));
+                if (!Directory.Exists(ServerConnectionsFolder)) 
+                    Directory.CreateDirectory(ServerConnectionsFolder);
+
+                File.WriteAllText(Path.Combine(ServerConnectionsFolder, ServerConnectionsFile), Serialize(servers));
             }
             catch (IOException ex)
             {
-                logger.LogError(ex, $"Error writing {ServerConnectionsFile}");
+                logger.LogError(ex, $"Error writing {Path.Combine(ServerConnectionsFolder, ServerConnectionsFile)}");
             }
         }
         public string Serialize(IList<ServerConnectionModel> servers)

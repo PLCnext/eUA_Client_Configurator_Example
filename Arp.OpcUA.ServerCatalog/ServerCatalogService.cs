@@ -25,10 +25,31 @@ namespace Arp.OpcUA.ServerCatalog
             if (servers == null)
                 servers = await serverRepository.GetAllServers();
 
+            if (servers == null)
+            {
+                servers = new List<ServerConnectionModel>
+                {
+                    new ServerConnectionModel()
+                    {
+                        Enabled = true,
+                        Name = "AXC F 2152",
+                        Url = "opc.tcp://192.168.1.10:4840",
+                        UserName = "admin",
+                        SecurityMode = Opc.Ua.MessageSecurityMode.SignAndEncrypt
+                    }
+                };
+            }
+
+            UpdateServersOnUAClient();
+        }
+
+        private void UpdateServersOnUAClient()
+        {
             uaClientService.ClearServers();
             foreach (var svr in servers.Where(svr => svr.Enabled))
                 uaClientService.AddServer(svr);
         }
+
         public async Task<IList<ServerConnectionModel>> GetServersAsync()
         {
             servers ??= await serverRepository.GetAllServers();
@@ -72,7 +93,7 @@ namespace Arp.OpcUA.ServerCatalog
             if (model is null) throw new ArgumentNullException(nameof(model));
 
             if (uaClientService.FindServer(model.Url) == -1)
-                uaClientService.AddServer(model);
+                UpdateServersOnUAClient(); // previous URL not known
             else if (model.Enabled)
                 uaClientService.UpdateServer(model);
             else

@@ -1,92 +1,235 @@
-# eUA Client Configurator
+# PLCnext Technology - eUAClientConfigurator
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Web](https://img.shields.io/badge/PLCnext-Website-blue.svg)](https://www.phoenixcontact.com/plcnext)
+[![Community](https://img.shields.io/badge/PLCnext-Community-blue.svg)](https://www.plcnext-community.net)
 
+With this tool you can generate OPC UA Client configurations for PLCnext controllers.
 
-## Getting started
+Content:  
+[1. Quickstart](#1-quickstart)  
+[2. Description of the client configuration file](#2-description-of-the-client-configuration-file)  
+[3. Detailed UI Description](#3-detailed-ui-description)  
+[3.1. Connections](#31-connections)  
+[3.2. Client configuration](#32-client-configuration)  
+[4. Configuration of the file system of the controller](#4-configuration-of-the-file-system-of-the-controller)  
+[5. Brief description of the program code](#5-brief-description-of-the-program-code)  
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## I. Project details
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+|Description   | Value      |
+|--------------|------------|
+|Created       | 05.09.2023 |
+|Last modified | 05.09.2023 |
+|Controller    | AXC F 1152; AXC F 2152; AXC F 3152 |
+|Firmware      | 2023.0 LTS |
 
-## Add your files
+## II. Background reading
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- [Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/)
+- [OPC UA information model](https://www.plcnext.help/te/Service_Components/OPC_UA_Server/OPCUA_information_models.htm)
+- [Client License in the PLCnext Store](https://www.plcnextstore.com/eu/app/1938)
+- [Client Configuration in the PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm)
 
-```
-cd existing_repo
-git remote add origin https://git-ima.europe.phoenixcontact.com/ima-opc-ua/examples/eua-client-configurator.git
-git branch -M main
-git push -uf origin main
-```
+## III. Prerequisites for this example
 
-## Integrate with your tools
+- Two PLCnext Control devices with firmware 2023.0.0 or later, and at least one Axioline I/O module.
+- PLCnext Engineer version 2023.0.0 or later.
+- Microsoft Visual Studio 2022.
+- OPC Client must be activated in the WBM of the controllers. See the following figure:
 
-- [ ] [Set up project integrations](https://git-ima.europe.phoenixcontact.com/ima-opc-ua/examples/eua-client-configurator/-/settings/integrations)
+![Activation of the Client in the WBM](README/WBM_00.PNG)
 
-## Collaborate with your team
+## 1. Quickstart
+You need the following Hardware and Software Configuration:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- AXC F 2152/3152 with IP: 192.168.1.10 and Firmware >= 2023
+- AXC F 2152/3152 with IP: 192.168.1.11 and Firmware >= 2023
+- PC with PLCnext Engineer Version >= 2023.6
 
-## Test and Deploy
+Use the Sample Projects in the Folder .\Simple Client Sample. In this Sample there is a AXC F 2152 (192.168.1.10) serving as OPC UA Server and a AXC F 3152 (192.168.1.11) serving as Client. Adjust the Sample Project to your controller hardware if needed. Connect to your controllers and load the sample projects into them.
 
-Use the built-in continuous integration in GitLab.
+Now open the eUA Client Configurator, switch to the 'Servers' tab and configure your controllers as follows:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Name: AXC F 2152  
+URL: opc.tcp://192.168.1.10:4840  
+User Name: <admin>  
+Password: <controller passwort for admin>  
+Security Mode: SignAndEncrypt  
+Security Policy: Aes256_Sha256_RsaPss  
 
-***
+Name: AXC F 3152  
+URL: opc.tcp://192.168.1.11:4840  
+User Name: <admin>  
+Password: <controller passwort for admin>  
+Security Mode: SignAndEncrypt  
+Security Policy: Aes256_Sha256_RsaPss  
 
-# Editing this README
+The configuration should now look like in the following figure:
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+![Configuration of the simple Client Sample](README/quickstart_00.png)
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Now switch to the 'Groups' tab to configure the variable groups. In the drop down list 'PLCnext with eUA Client' select the AXC F 3152 (or the controller which serves as client in your configuration). Add two groups, one with group type 'subscribe from server' and the other one with group type 'write to server'. With a click on the browse button now select the following variables:
 
-## Name
-Choose a self-explaining name for your project.
+|Group     | Local Variable (Client)  | Remote Variable (Server) |
+|----------|--------------------------|--------------------------|
+|Subscribe | iSubscribeVar            | iSubscribedVar           |
+|Write     | iWriteVar                | iWrittenVar              |
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+The configuration should now look like in the following figure:
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+![Variable configuration of the simple Client Sample](README/quickstart_01.png)
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Now use the export button to export the configuration in a .xml file. 
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Use a tool like WinSCP to connect to the file system of the AXC F 3152 (or the controller which serves as client in your configuration). Browse to the following folder: /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/Configs/ and copy the exported .xml file to here. 
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Now restart the controller through power Off/On. After startup your client configuration should work.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## 2. Description of the client configuration file
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+In this section the client configuration file, which can be created and exported with the eUA Client Configurator is described. The following figure shows the file exported from the simple client sample configuration mentioned in section 1 - Quickstart.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+![Config File of the simple client sample](README/config file_V00.PNG)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+The file is seperated into the two nodes 'ServerConnections' and 'VariableGroups'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## 3. Detailed UI Description
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+In this section the user interface of the eUA Client Configurator is described in detail, but not the engineering workflow. Therefere go to section 1 - Quickstart.
 
-## License
-For open source projects, say how it is licensed.
+### 3.1. Connections
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+First, at least two endpoints must be created that can communicate with each other.
+
+![Overview of existing servers](README/eUAClient Configurator UI_00.png)
+
+1.) Already added servers can be tested via the test button. The application then tries to establish a connection to the server.
+
+2.) With the add server button more servers can be added.
+
+![Add server](README/eUAClient Configurator UI_01.png)
+
+1.) Name of the server.
+
+2.) URL of the server in the format 'opc.tcp://192.168.1.10:4840'
+
+3.) User name for the server authentication.
+
+4.) Password for the server authentication.
+
+5.) Security mode.
+
+6.) Security policy (This must not be 'none' with PLCnext controller). 
+
+7.) Cancel and discard the server configuration or apply the server configuration and add the configured server to the server list.
+
+### 3.2. Client configuration
+
+Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
+
+![Add variable group](README/eUAClient Configurator UI_02.png)
+
+1.) Project name.
+
+2.) With a click on the new button a new variable group configuration will be created. The present variable group configuration will be discarded.
+
+3.) With a click on the load button a present variable group configuration can be loaded into the application.
+
+4.) With a click on the save button the variable group configuration can be saved in a file in JSON format.
+
+5.) With a click on the export button the variable group configuration can be exported in the OPC client readable XML format.
+
+6.) The controller which serves as OPC client must be selected here.
+
+7.) With a click on the add group button a new variable group can be added to the configuration.
+
+![Add variables](README/eUAClient Configurator UI_03.png)
+
+1.) Type of the variable group can be 'subscribe from server' or 'write to server'.
+
+2.) Cycle time.
+
+3.) Local variables at client end.
+
+4.) Remote variables which are linked to the corresponding local variables 
+
+5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
+
+![Variable mapping](README/eUAClient Configurator UI_06.png)
+
+With a click on the browse button the selection windows for local (Client) and remote variables (Server) opens.
+
+![Local variable selection](README/eUAClient Configurator UI_04.png)  
+
+Select window for local variables on client end.
+
+![Remote variable selection](README/eUAClient Configurator UI_05.png)  
+
+Select window for remote variables. The server can be selected via the selection above.
+
+## 4. Configuration of the file system of the controller
+
+This section describes where in the file system of the controller OPC UA client configurations can be found and where the OPC UA client configuration generated with the eUA Client Configurator have to be stored. 
+
+The file system of the PLCnext Controller can be entered using a tool like WinSCP. The following figure shows how to establish a connection to the controller.
+
+![Using WinSCP](README/WinSCP_V00.PNG){width=60%}  
+
+1.) IP-Address of the PLCnext controller.
+
+2.) Username of the PLCnext controller.
+
+3.) Password of the PLCnext controller.
+
+The generated client configuration has to be stored to /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/Configs/ see the following figure.
+
+![Client configuration on the file system of the controller](README/PLCnext Config_02.PNG)
+
+However there are some more paths which are also relevant for OPC UA client configuration, but not necessary in combination with the eUA Client Configurator.
+
+In the following path a configuration file for the general client settings can be stored. If there is no file here and there is also no configuration in the PLCnext Engineer project on the controller, then the default settings are used:
+
+/opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/
+
+This path contains the configuration file for the general client settings from the PLCnext Engineer project:
+
+/opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/
+
+This path contains the configuration file for the client connections configuration from the PLCnext Engineer project:
+
+/opt/plcnext/projects/PCWE/Services/OpcUA/Modules/Client/Configs/
+
+## 5. Brief description of the program code
+
+The solution consists of the following projects:
+
+ - Apps/eUAClientConfigurator: The main executable as ASP.NET Core Web Application  
+ - The Core folder contains some common projects, which are used by other parts of the solution  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.Clore: Abstraction of a minimalistic OPC UA Client  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.Client: Implementation of the OPC UA Client  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.Core: Common Blazor UI components which are used for the UI projects  
+ - The eUAClientConfig folder contains projects for the eUA Client configuration  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ClientConfiguration: The implementation of the client configuration  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.ClientConfiguration: A user interface for the eUA Client configuration  
+ - The ServerCatalog folder contains projects for managing a list of OPC UA Servers  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ServerCatalog: Collection of servers with name and access information  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.ServerRepository: Persistence of the server catalog as a JSON file  
+&nbsp;&nbsp;&nbsp;&nbsp; - Arp.OpcUA.UI.ServerCatalog: Blazor based UI for editing the server catalog  
+
+The following figure shows the software architecture:
+
+![Architecture of the software](README/Assemblies.png)
+ 
+## IV. Problems?
+
+- [Check the Output.log file](https://pxc1.esc-eu-central-1.empolisservices.com/service-express/portal/project1_p/document/iu-45-85e4a3ef-5699-4c4f-b7b9-4a04246e53d3?context=%7B%7D) on the PLC for messages from the OPC UA Client.
+- Ask for help in the [PLCnext Community Forum](https://www.plcnext-community.net/en/discussions-2-offcanvas/forums.html).
+
+If you find a mistake in this procedure, or if you would like to suggest improvements or new features, please [open an issue](https://github.com/PLCnext/eUAClientConfigurator/issues).
+
+## V. License
+
+Copyright (c) Phoenix Contact GmbH & Co KG. All rights reserved.
+
+Licensed under the [MIT](/LICENSE) License.
