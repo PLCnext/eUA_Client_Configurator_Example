@@ -1,9 +1,0 @@
-[
-	{
-		"Enabled": true, 
-		"Name": "AXC F 2152",
-		"Url": "opc.tcp://192.168.1.10:4840",
-		"SecurityMode": 1,
-		"SecurityPolicyUri": null
-	} 
-]
