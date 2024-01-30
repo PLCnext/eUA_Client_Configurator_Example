@@ -90,7 +90,7 @@ Now restart the controller through power Off/On. After startup your client confi
 
 In this section the client configuration file, which can be created and exported with the eUA Client Configurator is described. The following figure shows the file exported from the simple client sample configuration mentioned in section 1 - Quickstart.
 
-![Config File of the simple client sample](README/config file_V00.PNG)
+![Config File of the simple client sample](README/configFile_V00.PNG)
 
 The file is seperated into the two nodes 'ServerConnections' and 'VariableGroups'. In the node <ServerConnections> you can find the informations from the 'Servers' tab of the eUA Client Configurator. In the node <VariableGroups> you can find the informations from the 'Groups' tab of the eUA Client Configurator. The client configuration file is described in detail in the [PLCnext Infocenter](https://www.plcnext.help/te/Communication_interfaces/OPC_UA/OPC_UA_client.htm).
 
@@ -102,13 +102,13 @@ In this section the user interface of the eUA Client Configurator is described i
 
 First, at least two endpoints must be created that can communicate with each other.
 
-![Overview of existing servers](README/eUAClient Configurator UI_00.png)
+![Overview of existing servers](README/eUAClientConfiguratorUI_00.png)
 
 1.) Already added servers can be tested via the test button. The application then tries to establish a connection to the server.
 
 2.) With the add server button more servers can be added.
 
-![Add server](README/eUAClient Configurator UI_01.png)
+![Add server](README/eUAClientConfiguratorUI_01.png)
 
 1.) Name of the server.
 
@@ -128,7 +128,7 @@ First, at least two endpoints must be created that can communicate with each oth
 
 Now a variable group with variables can be added. For this purpose, variables of a controller that acts as a client are linked with variables of one or more servers.
 
-![Add variable group](README/eUAClient Configurator UI_02.png)
+![Add variable group](README/eUAClientConfiguratorUI_02.png)
 
 1.) Project name.
 
@@ -144,7 +144,7 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 7.) With a click on the add group button a new variable group can be added to the configuration.
 
-![Add variables](README/eUAClient Configurator UI_03.png)
+![Add variables](README/eUAClientConfiguratorUI_03.png)
 
 1.) Type of the variable group can be 'subscribe from server' or 'write to server'.
 
@@ -156,15 +156,15 @@ Now a variable group with variables can be added. For this purpose, variables of
 
 5.) With a click on the add variable button a new local/remote pair of variables is added to the group.
 
-![Variable mapping](README/eUAClient Configurator UI_06.png)
+![Variable mapping](README/eUAClientConfiguratorUI_06.png)
 
 With a click on the browse button the selection windows for local (Client) and remote variables (Server) opens.
 
-![Local variable selection](README/eUAClient Configurator UI_04.png)  
+![Local variable selection](README/eUAClientConfiguratorUI_04.png)  
 
 Select window for local variables on client end.
 
-![Remote variable selection](README/eUAClient Configurator UI_05.png)  
+![Remote variable selection](README/eUAClientConfiguratorUI_05.png)  
 
 Select window for remote variables. The server can be selected via the selection above.
 
@@ -184,7 +184,7 @@ The file system of the PLCnext Controller can be entered using a tool like WinSC
 
 The generated client configuration has to be stored to /opt/plcnext/projects/Default/Services/OpcUA/Modules/Client/Configs/ see the following figure.
 
-![Client configuration on the file system of the controller](README/PLCnext Config_02.PNG)
+![Client configuration on the file system of the controller](README/PLCnextConfig_02.PNG)
 
 However there are some more paths which are also relevant for OPC UA client configuration, but not necessary in combination with the eUA Client Configurator.
 
